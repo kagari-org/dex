@@ -431,9 +431,10 @@ type Password struct {
 	// This field is IMMUTABLE. Do not change.
 	Email string `json:"email,omitempty"`
 
-	Hash     []byte `json:"hash,omitempty"`
-	Username string `json:"username,omitempty"`
-	UserID   string `json:"userID,omitempty"`
+	Hash     []byte   `json:"hash,omitempty"`
+	Username string   `json:"username,omitempty"`
+	UserID   string   `json:"userID,omitempty"`
+	Groups   []string `json:"groups,omitempty"`
 }
 
 // PasswordList is a list of Passwords.
@@ -458,6 +459,7 @@ func (cli *client) fromStoragePassword(p storage.Password) Password {
 		Hash:     p.Hash,
 		Username: p.Username,
 		UserID:   p.UserID,
+		Groups:   p.Groups,
 	}
 }
 
@@ -467,6 +469,7 @@ func toStoragePassword(p Password) storage.Password {
 		Hash:     p.Hash,
 		Username: p.Username,
 		UserID:   p.UserID,
+		Groups:   p.Groups,
 	}
 }
 
